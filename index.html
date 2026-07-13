@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deepanshu // Shadow Security Operator Status</title>
+    <meta name="description" content="RPG System Interface Portfolio of Deepanshu, Cyber Security Student & HTB Competitor.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Particles & Scanlines -->
+    <div class="system-particles" id="particles-container"></div>
+    <div class="scanlines"></div>
+    <div class="glow-overlay"></div>
+
+    <!-- System Header -->
+    <header class="system-header">
+        <div class="header-container">
+            <div class="logo">
+                <span class="logo-symbol">✦</span> SYSTEM_MONITOR <span class="header-status">ACTIVE</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="#status" class="nav-link">STATUS</a>
+                <a href="#skills" class="nav-link">SKILLS</a>
+                <a href="#quests" class="nav-link">QUESTS</a>
+                <a href="#skills-activation" class="nav-link">ACTIVATE</a>
+                <a href="#guild" class="nav-link">GUILD_DESK</a>
+            </nav>
+            <div class="header-clock" id="system-time">00:00:00 UTC</div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="system-container">
+        <!-- Section: Status Window -->
+        <section id="status" class="system-section">
+            <div class="section-badge">PLAYER STATUS INFO</div>
+            <div class="status-grid">
+                <!-- HUD Window -->
+                <div class="hud-card glass-panel">
+                    <div class="panel-header">
+                        <span class="panel-title">CHARACTER DETAILS</span>
+                        <div class="panel-accent">SYS_ID: #019CEC</div>
+                    </div>
+                    <div class="hud-body">
+                        <!-- Profile HUD Header -->
+                        <div class="hud-profile">
+                            <div class="avatar-box">
+                                <div class="avatar-glitch"></div>
+                                <span class="avatar-tag">LVL 42</span>
+                            </div>
+                            <div class="profile-identity">
+                                <h2>DEEPANSHU</h2>
+                                <p class="class-text">CLASS: SHADOW SECURITY SPECIALIST</p>
+                                <p class="title-text">TITLE: THE ONE WHO PERSISTS</p>
+                            </div>
+                        </div>
+
+                        <!-- Level & Exp Bar -->
+                        <div class="level-status">
+                            <div class="label-row">
+                                <span>EXP PROGRESS</span>
+                                <span class="highlight-cyan">78%</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar-fill exp-fill" style="width: 78%;"></div>
+                            </div>
+                        </div>
+
+                        <!-- HP / MP Indicators -->
+                        <div class="meters-container">
+                            <div class="meter-group">
+                                <div class="label-row">
+                                    <span>HP (HEALTH POINTS)</span>
+                                    <span class="highlight-red">8,500 / 8,500</span>
+                                </div>
+                                <div class="bar-container">
+                                    <div class="bar-fill hp-fill" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                            <div class="meter-group">
+                                <div class="label-row">
+                                    <span>MP (MANA / FOCUS POINTS)</span>
+                                    <span class="highlight-cyan">6,400 / 6,400</span>
+                                </div>
+                                <div class="bar-container">
+                                    <div class="bar-fill mp-fill" style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-links">
+                            <a href="https://profile.hackthebox.com/profile/019cec25-2029-70a5-ad08-c4d807b5d9d1" target="_blank" class="guild-btn rank-s">HTB PROFILE (RANK S)</a>
+                            <div class="link-row">
+                                <a href="https://github.com/JJTHOMPSON0" target="_blank" class="guild-btn">GITHUB</a>
+                                <a href="https://www.linkedin.com/in/deepanshu-a49821334/" target="_blank" class="guild-btn">LINKEDIN</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attributes allocation board -->
+                <div class="attributes-card glass-panel">
+                    <div class="panel-header">
+                        <span class="panel-title">BASE ATTRIBUTES</span>
+                        <div class="panel-accent">AVAILABLE_PTS: <span id="stat-points" class="highlight-yellow">5</span></div>
+                    </div>
+                    <div class="attributes-body">
+                        <!-- STR -->
+                        <div class="attr-row">
+                            <div class="attr-info">
+                                <span class="attr-abbr" title="Scripting & Coding Strength">STR</span>
+                                <span class="attr-name">Scripting Power</span>
+                            </div>
+                            <div class="attr-val-control">
+                                <span class="attr-value" id="val-str">48</span>
+                                <button class="stat-up-btn" data-stat="str">+</button>
+                            </div>
+                        </div>
+                        <!-- AGI -->
+                        <div class="attr-row">
+                            <div class="attr-info">
+                                <span class="attr-abbr" title="Asynchronous Exploit execution speed">AGI</span>
+                                <span class="attr-name">Exploit Speed</span>
+                            </div>
+                            <div class="attr-val-control">
+                                <span class="attr-value" id="val-agi">51</span>
+                                <button class="stat-up-btn" data-stat="agi">+</button>
+                            </div>
+                        </div>
+                        <!-- INT -->
+                        <div class="attr-row">
+                            <div class="attr-info">
+                                <span class="attr-abbr" title="Active Directory Enumeration & Logic">INT</span>
+                                <span class="attr-name">Domain Recon</span>
+                            </div>
+                            <div class="attr-val-control">
+                                <span class="attr-value" id="val-int">54</span>
+                                <button class="stat-up-btn" data-stat="int">+</button>
+                            </div>
+                        </div>
+                        <!-- VIT -->
+                        <div class="attr-row">
+                            <div class="attr-info">
+                                <span class="attr-abbr" title="AD Security & Defensive resilience">VIT</span>
+                                <span class="attr-name">Network Hardening</span>
+                            </div>
+                            <div class="attr-val-control">
+                                <span class="attr-value" id="val-vit">50</span>
+                                <button class="stat-up-btn" data-stat="vit">+</button>
+                            </div>
+                        </div>
+                        <!-- LUK -->
+                        <div class="attr-row">
+                            <div class="attr-info">
+                                <span class="attr-abbr" title="Zero-Day Discovery & Vulnerability finding probability">LUK</span>
+                                <span class="attr-name">Vuln Discovery</span>
+                            </div>
+                            <div class="attr-val-control">
+                                <span class="attr-value" id="val-luk">38</span>
+                                <button class="stat-up-btn" data-stat="luk">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Skills System -->
+        <section id="skills" class="system-section">
+            <div class="section-badge">SKILLS INVENTORY</div>
+            <div class="skills-grid-layout">
+                <!-- Skill: Active Directory Security (SS) -->
+                <div class="skill-node-card glass-panel ss-rank">
+                    <div class="skill-node-header">
+                        <span class="skill-node-name">Active Directory Security</span>
+                        <span class="skill-rank-badge ss">SS</span>
+                    </div>
+                    <p class="skill-node-desc">Domain enumeration, Kerberoasting, AS-REP Roasting, DCSync, and domain privilege escalation using Rubeus, Mimikatz, and BloodHound.</p>
+                </div>
+                <!-- Skill: Python (S) -->
+                <div class="skill-node-card glass-panel s-rank">
+                    <div class="skill-node-header">
+                        <span class="skill-node-name">Python Scripting</span>
+                        <span class="skill-rank-badge s">S</span>
+                    </div>
+                    <p class="skill-node-desc">Developing custom low-level asynchronous network utilities (Scapy, raw socket operations, multi-threading).</p>
+                </div>
+                <!-- Skill: Intrusion Toolkits (A) -->
+                <div class="skill-node-card glass-panel a-rank">
+                    <div class="skill-node-header">
+                        <span class="skill-node-name">Offensive Toolkits</span>
+                        <span class="skill-rank-badge a">A</span>
+                    </div>
+                    <p class="skill-node-desc">Vulnerability assessment and exploitation using Burp Suite, Metasploit, Nmap, Wireshark, Hashcat, and John the Ripper.</p>
+                </div>
+                <!-- Skill: C / C++ (A) -->
+                <div class="skill-node-card glass-panel a-rank">
+                    <div class="skill-node-header">
+                        <span class="skill-node-name">C / C++ Development</span>
+                        <span class="skill-rank-badge a">A</span>
+                    </div>
+                    <p class="skill-node-desc">Low-level system programming, memory manipulation, structures, and execution algorithms.</p>
+                </div>
+                <!-- Skill: OSINT Reconnaissance (B) -->
+                <div class="skill-node-card glass-panel b-rank">
+                    <div class="skill-node-header">
+                        <span class="skill-node-name">OSINT Reconnaissance</span>
+                        <span class="skill-rank-badge b">B</span>
+                    </div>
+                    <p class="skill-node-desc">Target intelligence gathering, network surface mapping, and open-source threat analysis.</p>
+                </div>
+                <!-- Skill: Java (B) -->
+                <div class="skill-node-card glass-panel b-rank">
+                    <div class="skill-node-header">
+                        <span class="skill-node-name">Java Programming</span>
+                        <span class="skill-rank-badge b">B</span>
+                    </div>
+                    <p class="skill-node-desc">Object-oriented application structuring, class hierarchy architecture, and software logic loops.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Quest Log -->
+        <section id="quests" class="system-section">
+            <div class="section-badge">QUEST ARCHIVE</div>
+            <div class="quest-layout">
+                <!-- Active Quests -->
+                <div class="quest-column glass-panel">
+                    <div class="panel-header">
+                        <span class="panel-title">ACTIVE CAMPAIGNS</span>
+                        <div class="panel-indicator green-blink"></div>
+                    </div>
+                    <div class="quest-list">
+                        <div class="quest-card">
+                            <div class="quest-header">
+                                <h4>Hack The Box Labs (Practice)</h4>
+                                <span class="quest-difficulty rank-a">RANK A</span>
+                            </div>
+                            <p class="quest-desc">Compromise complex targets covering Active Directory networks and Windows/Linux privilege escalation.</p>
+                            <div class="quest-rewards">
+                                <span>REWARD: Platinum Rank Season 10</span>
+                                <span>EXP: Ongoing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Completed Quests -->
+                <div class="quest-column glass-panel">
+                    <div class="panel-header">
+                        <span class="panel-title">COMPLETED OPERATIONS</span>
+                        <span class="panel-accent">ARCHIVED</span>
+                    </div>
+                    <div class="quest-list">
+                        <div class="quest-card completed">
+                            <div class="quest-header">
+                                <h4>SAPIENSEC CTF (Pen Testing)</h4>
+                                <span class="quest-difficulty rank-s">RANK S</span>
+                            </div>
+                            <p class="quest-desc">Secured 2nd place by resolving cryptographic, web exploitation, and digital forensic challenges.</p>
+                            <div class="quest-rewards">
+                                <span>REWARD: ₹5,000 Cash Prize</span>
+                                <span>EXP: +5,000 EXP</span>
+                            </div>
+                        </div>
+                        <div class="quest-card completed">
+                            <div class="quest-header">
+                                <h4>SecLeaf CTF 2026</h4>
+                                <span class="quest-difficulty rank-b">RANK B</span>
+                            </div>
+                            <p class="quest-desc">Outperformed 91% of global teams, achieving 65th place out of 750 participants.</p>
+                            <div class="quest-rewards">
+                                <span>REWARD: Top 9% Badge</span>
+                                <span>EXP: +1,500 EXP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Active Skill Spectre_Scan -->
+        <section id="skills-activation" class="system-section">
+            <div class="section-badge">SKILL ACTIVATION PANEL</div>
+            <div class="skill-activation-grid glass-panel">
+                <div class="activation-info">
+                    <h3>ACTIVE UTILITY: SPECTRE_SCAN</h3>
+                    <p class="tech-stack-tag">ENGINE: Python 3.10 // Scapy Core // Multithreading</p>
+                    <p class="activation-desc">
+                        A tactical low-level Python network scanner engineered for rapid subnet scanning and host mapping. Employs raw TCP SYN packets, asynchronous threads, and socket modules to perform rapid service scanning.
+                    </p>
+                    <div class="system-specs">
+                        <div class="spec-item"><span class="spec-label">COOLDOWN:</span> <span class="spec-value">0.0s</span></div>
+                        <div class="spec-item"><span class="spec-label">SOCKET_TYPE:</span> <span class="spec-value">Raw SOCK_RAW</span></div>
+                        <div class="spec-item"><span class="spec-label">ACCURACY:</span> <span class="spec-value">98.4%</span></div>
+                    </div>
+                    <div class="activation-buttons">
+                        <button id="activate-skill-btn" class="guild-btn rank-s">ACTIVATE SKILL: SPECTRE_SCAN</button>
+                        <a href="https://github.com/JJTHOMPSON0/Spectre_Scan" target="_blank" class="guild-btn">SOURCE REPOSITORY</a>
+                    </div>
+                </div>
+                
+                <!-- Terminal Display -->
+                <div class="activation-monitor">
+                    <div class="monitor-header">
+                        <span class="monitor-title">&gt;_ SYSTEM MONITOR DISPATCH</span>
+                    </div>
+                    <div class="monitor-screen" id="activation-screen">
+                        <div class="monitor-line system-text">System skill inactive. Press ACTIVATE to run Spectre_Scan simulator.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Guild Connection Desk -->
+        <section id="guild" class="system-section">
+            <div class="section-badge">GUILD TRANSMISSION PORTAL</div>
+            <div class="guild-grid">
+                <!-- Guild Details -->
+                <div class="guild-details glass-panel">
+                    <div class="panel-header">
+                        <span class="panel-title">GUILD RECEPTION</span>
+                    </div>
+                    <div class="guild-body-content">
+                        <h3>INITIATE TRANSMISSION</h3>
+                        <p>Submit connection requests, project scopes, or CTF recruitment communications. All payloads are routed through secure pathways.</p>
+                        <div class="guild-endpoints">
+                            <div class="endpoint">
+                                <span class="tag">GUILD_MAIL:</span>
+                                <span class="endpoint-val"><a href="mailto:zorodeepanshu@gmail.com">zorodeepanshu@gmail.com</a></span>
+                            </div>
+                            <div class="endpoint">
+                                <span class="tag">NODE_LOCATION:</span>
+                                <span class="endpoint-val">Gurugram, India</span>
+                            </div>
+                            <div class="endpoint">
+                                <span class="tag">TRAINING_CAMP:</span>
+                                <span class="endpoint-val">B.Tech Cyber Security (Dronacharya College)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Panel -->
+                <div class="guild-form glass-panel">
+                    <div class="panel-header">
+                        <span class="panel-title">MESSAGE PAYLOAD PACKET</span>
+                    </div>
+                    <form id="transmission-form" class="guild-form-body">
+                        <div class="input-group">
+                            <label>SENDER IDENTITY (Name)</label>
+                            <input type="text" id="sender-name" placeholder="Name..." required>
+                        </div>
+                        <div class="input-group">
+                            <label>ENVELOPE ADDRESS (Email)</label>
+                            <input type="email" id="sender-email" placeholder="email@address.com" required>
+                        </div>
+                        <div class="input-group">
+                            <label>TRANSMISSION DATA (Message)</label>
+                            <textarea id="transmission-payload" rows="4" placeholder="Payload content..." required></textarea>
+                        </div>
+                        <button type="submit" class="guild-btn rank-s block">TRANSMIT PACKET</button>
+                    </form>
+                    <div class="transmission-status hidden" id="portal-status-overlay">
+                        <div class="portal-spinner"></div>
+                        <p class="portal-msg">INITIATING PAYLOAD HANDSHAKE...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="system-footer">
+        <div class="footer-wrap">
+            <p>✦ DEEPANSHU. ALL TRANSMISSIONS RECORDED.</p>
+            <p class="coords">NODE_LAT: 28.4595° N // NODE_LON: 77.0266° E</p>
+        </div>
+    </footer>
+
+    <!-- Script file -->
+    <script src="app.js"></script>
+</body>
+</html>

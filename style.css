@@ -1,0 +1,1056 @@
+/* Base Color Variables & RPG Styling Tokens */
+:root {
+    --bg-system: #02040a;
+    --panel-bg: rgba(6, 12, 24, 0.6);
+    --panel-border: 1.5px solid rgba(0, 229, 255, 0.25);
+    --panel-border-purple: 1.5px solid rgba(189, 0, 255, 0.25);
+    
+    --accent-cyan: #00e5ff;
+    --accent-purple: #bd00ff;
+    --accent-red: #ff3366;
+    --accent-yellow: #ffea00;
+    
+    --text-main: #e2f1ff;
+    --text-sub: #8ca3bf;
+    --text-dim: #435b75;
+    
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-sans: 'Outfit', sans-serif;
+    
+    --glow-cyan: 0 0 15px rgba(0, 229, 255, 0.25);
+    --glow-purple: 0 0 15px rgba(189, 0, 255, 0.25);
+    --glow-red: 0 0 15px rgba(255, 51, 102, 0.25);
+}
+
+/* Global Setup */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-system);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    overflow-x: hidden;
+    position: relative;
+    padding-top: 80px; /* Offset fixed header */
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(189, 0, 255, 0.04) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.04) 0%, transparent 40%);
+    background-attachment: fixed;
+}
+
+/* Background Cyber Scanlines & Grids */
+.scanlines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.3) 50%
+    );
+    background-size: 100% 4px;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* Particles Background Area */
+.system-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* System Header Navigation */
+.system-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background: rgba(2, 4, 10, 0.85);
+    border-bottom: 2px solid rgba(0, 229, 255, 0.2);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.logo {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+
+.logo-symbol {
+    color: var(--accent-cyan);
+    animation: rotateSymbol 6s infinite linear;
+}
+
+@keyframes rotateSymbol {
+    100% { transform: rotate(360deg); }
+}
+
+.header-status {
+    font-size: 0.65rem;
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--accent-cyan);
+    padding: 2px 8px;
+    border: 1px solid var(--accent-cyan);
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    color: var(--text-sub);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 6px 12px;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--accent-cyan);
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    background: rgba(0, 229, 255, 0.05);
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+}
+
+.header-clock {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent-cyan);
+    background: rgba(0, 229, 255, 0.05);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    padding: 4px 10px;
+    border-radius: 3px;
+}
+
+/* Master Layout Container */
+.system-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* Section Title & Badging */
+.system-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section-badge {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    padding: 4px 14px;
+    border-radius: 20px;
+    letter-spacing: 1.5px;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+}
+
+/* Holographic Translucent Panels */
+.glass-panel {
+    background: var(--panel-bg);
+    border: var(--panel-border);
+    border-radius: 12px;
+    backdrop-filter: blur(15px);
+    transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+.glass-panel:hover {
+    border-color: rgba(0, 229, 255, 0.5);
+    box-shadow: var(--glow-cyan), 0 15px 40px rgba(0, 0, 0, 0.6);
+    transform: translateY(-2px);
+}
+
+.panel-header {
+    background: rgba(3, 7, 18, 0.75);
+    padding: 12px 20px;
+    border-bottom: 1.5px solid rgba(0, 229, 255, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.panel-title {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 800;
+    color: var(--accent-cyan);
+    letter-spacing: 1px;
+}
+
+.panel-accent {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-sub);
+}
+
+/* 1. Character Status Card Layout */
+.status-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 30px;
+}
+
+.hud-body {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Glitch Avatar HUD info */
+.hud-profile {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.avatar-box {
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--accent-cyan);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    background: rgba(0, 229, 255, 0.05);
+    box-shadow: var(--glow-cyan);
+}
+
+.avatar-glitch {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple));
+    opacity: 0.25;
+    animation: avatarPulse 4s infinite ease-in-out;
+}
+
+@keyframes avatarPulse {
+    0%, 100% { opacity: 0.25; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.1); }
+}
+
+.avatar-tag {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-cyan);
+    color: #02040a;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 0.65rem;
+    padding: 1px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+
+.profile-identity h2 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.class-text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-cyan);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.title-text {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent-purple);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* EXP Progress Fills & State HUD bars */
+.level-status,
+.meter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-sub);
+    font-weight: 700;
+}
+
+.bar-container {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1s ease-in-out;
+}
+
+.exp-fill {
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+}
+
+.hp-fill {
+    background: linear-gradient(90deg, #ff3366, #ff6699);
+    box-shadow: 0 0 8px rgba(255, 51, 102, 0.4);
+}
+
+.mp-fill {
+    background: linear-gradient(90deg, #00d2ff, #0077ff);
+    box-shadow: 0 0 8px rgba(0, 210, 255, 0.4);
+}
+
+.highlight-cyan { color: var(--accent-cyan); }
+.highlight-red { color: var(--accent-red); }
+.highlight-yellow { color: var(--accent-yellow); }
+
+.profile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.link-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.guild-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-main);
+    padding: 12px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.guild-btn:hover {
+    background: rgba(0, 229, 255, 0.08);
+    border-color: var(--accent-cyan);
+    box-shadow: var(--glow-cyan);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.guild-btn.rank-s {
+    background: linear-gradient(90deg, rgba(0,229,255,0.1), rgba(189,0,255,0.1));
+    border: 1.5px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+}
+
+.guild-btn.rank-s:hover {
+    background: linear-gradient(90deg, rgba(0,229,255,0.25), rgba(189,0,255,0.25));
+    border-color: #fff;
+    box-shadow: var(--glow-cyan), var(--glow-purple);
+}
+
+.guild-btn.block {
+    width: 100%;
+}
+
+/* 2. Attributes Allocation Panel */
+.attributes-body {
+    padding: 24px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.attr-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+    padding-bottom: 12px;
+}
+
+.attr-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.attr-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.attr-abbr {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 0.9rem;
+    color: var(--accent-cyan);
+    background: rgba(0, 229, 255, 0.05);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    width: 44px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    cursor: help;
+}
+
+.attr-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-sub);
+}
+
+.attr-val-control {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.attr-value {
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.stat-up-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    border: 1px solid var(--accent-yellow);
+    background: rgba(255, 234, 0, 0.05);
+    color: var(--accent-yellow);
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.stat-up-btn:hover {
+    background: var(--accent-yellow);
+    color: #02040a;
+    box-shadow: 0 0 8px var(--accent-yellow);
+}
+
+/* 3. Skills Grid & Rank Badges */
+.skills-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.skill-node-card {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skill-node-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+    padding-bottom: 10px;
+}
+
+.skill-node-name {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.skill-rank-badge {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+/* Rank Badge Colors matching RPG hierarchy */
+.skill-rank-badge.sss {
+    background: rgba(255, 234, 0, 0.15);
+    color: var(--accent-yellow);
+    border: 1px solid var(--accent-yellow);
+    box-shadow: 0 0 10px rgba(255, 234, 0, 0.25);
+}
+
+.skill-rank-badge.ss {
+    background: rgba(189, 0, 255, 0.15);
+    color: var(--accent-purple);
+    border: 1px solid var(--accent-purple);
+    box-shadow: var(--glow-purple);
+}
+
+.skill-rank-badge.s {
+    background: rgba(0, 229, 255, 0.15);
+    color: var(--accent-cyan);
+    border: 1px solid var(--accent-cyan);
+    box-shadow: var(--glow-cyan);
+}
+
+.skill-rank-badge.a {
+    background: rgba(0, 255, 102, 0.15);
+    color: #00ff66;
+    border: 1px solid #00ff66;
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
+}
+
+.skill-rank-badge.b {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-sub);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.skill-node-desc {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    line-height: 1.45;
+}
+
+/* 4. Quest Log columns */
+.quest-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.quest-list {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.quest-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.25s ease;
+}
+
+.quest-card:hover {
+    border-color: var(--accent-cyan);
+    background: rgba(0, 229, 255, 0.02);
+}
+
+.quest-card.completed {
+    border-color: rgba(189, 0, 255, 0.2);
+}
+
+.quest-card.completed:hover {
+    border-color: var(--accent-purple);
+    background: rgba(189, 0, 255, 0.02);
+}
+
+.quest-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.quest-header h4 {
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+.quest-difficulty {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 3px;
+}
+
+.quest-difficulty.rank-s {
+    background: rgba(255, 234, 0, 0.1);
+    color: var(--accent-yellow);
+    border: 1px solid var(--accent-yellow);
+}
+
+.quest-difficulty.rank-a {
+    background: rgba(255, 51, 102, 0.1);
+    color: var(--accent-red);
+    border: 1px solid var(--accent-red);
+}
+
+.quest-difficulty.rank-b {
+    background: rgba(0, 229, 255, 0.1);
+    color: var(--accent-cyan);
+    border: 1px solid var(--accent-cyan);
+}
+
+.quest-desc {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+}
+
+.quest-rewards {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px dashed rgba(255, 255, 255, 0.05);
+    padding-top: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-cyan);
+}
+
+.quest-card.completed .quest-rewards {
+    color: var(--accent-purple);
+}
+
+.green-blink {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--accent-cyan);
+    animation: blinkGlow 2.5s infinite alternate ease-in-out;
+}
+
+@keyframes blinkGlow {
+    from { opacity: 0.3; box-shadow: 0 0 0 rgba(0, 229, 255, 0); }
+    to { opacity: 1; box-shadow: 0 0 10px var(--accent-cyan); }
+}
+
+/* 5. Spectre_Scan Simulation HUD */
+.skill-activation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+}
+
+.activation-info {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1.5px solid rgba(0, 229, 255, 0.2);
+    gap: 16px;
+}
+
+.activation-info h3 {
+    font-size: 1.3rem;
+    color: #fff;
+}
+
+.tech-stack-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-purple);
+    font-weight: 700;
+}
+
+.activation-desc {
+    font-size: 0.85rem;
+    color: var(--text-sub);
+}
+
+.system-specs {
+    display: flex;
+    gap: 16px;
+}
+
+.spec-item {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 4px 8px;
+    background: rgba(255,255,255,0.01);
+    border-radius: 3px;
+}
+
+.spec-label {
+    color: var(--text-dim);
+}
+
+.spec-value {
+    color: var(--accent-cyan);
+    font-weight: bold;
+}
+
+.activation-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+/* Activation Simulator Monitor */
+.activation-monitor {
+    background: #020409;
+    display: flex;
+    flex-direction: column;
+    height: 360px;
+}
+
+.monitor-header {
+    background: rgba(6, 12, 24, 0.8);
+    padding: 10px 16px;
+    border-bottom: 1.5px solid rgba(0, 229, 255, 0.15);
+}
+
+.monitor-title {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--accent-cyan);
+    font-weight: 700;
+}
+
+.activation-monitor:hover {
+    box-shadow: none;
+}
+
+.monitor-screen {
+    padding: 20px;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent-cyan);
+    overflow-y: auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.monitor-line {
+    word-break: break-all;
+    white-space: pre-wrap;
+}
+
+.monitor-line.system-text {
+    color: var(--text-dim);
+    font-style: italic;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.sim-output-line { color: #fff; }
+.sim-success-line { color: var(--accent-cyan); }
+.sim-alert-line { color: var(--accent-purple); }
+.sim-highlight-line { color: var(--accent-yellow); }
+
+/* 6. Guild Connection Desk & Form styles */
+.guild-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 30px;
+}
+
+.guild-body-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.guild-body-content h3 {
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.guild-body-content p {
+    font-size: 0.9rem;
+    color: var(--text-sub);
+    margin-bottom: 24px;
+}
+
+.guild-endpoints {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.endpoint {
+    border-bottom: 1.5px dashed rgba(255, 255, 255, 0.05);
+    padding-bottom: 12px;
+}
+
+.endpoint:last-child {
+    border-bottom: none;
+}
+
+.endpoint .tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent-purple);
+    display: block;
+    font-weight: 700;
+}
+
+.endpoint-val {
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.endpoint-val a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+}
+
+.endpoint-val a:hover {
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+}
+
+/* Transmission Form layout */
+.guild-form {
+    position: relative;
+}
+
+.guild-form-body {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-group label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-sub);
+    font-weight: 700;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    background: rgba(3, 7, 18, 0.6);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    box-shadow: var(--glow-cyan);
+    background: rgba(3, 7, 18, 0.9);
+}
+
+/* Status Overlays */
+.transmission-status {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 4, 10, 0.96);
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    gap: 16px;
+    transition: opacity 0.3s ease;
+}
+
+.transmission-status.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.portal-spinner {
+    width: 36px;
+    height: 36px;
+    border: 3px solid rgba(0, 229, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--accent-cyan);
+    animation: rotateSymbol 1s linear infinite;
+}
+
+.portal-msg {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--accent-cyan);
+}
+
+/* System Footer */
+.system-footer {
+    border-top: 1.5px solid rgba(0, 229, 255, 0.15);
+    background: rgba(2, 4, 10, 0.6);
+    padding: 30px 24px;
+}
+
+.footer-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-dim);
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.system-footer .coords {
+    color: var(--accent-cyan);
+}
+
+/* Custom Scrollbars */
+.monitor-screen::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
+    width: 5px;
+}
+.monitor-screen::-webkit-scrollbar-track,
+textarea::-webkit-scrollbar-track {
+    background: transparent;
+}
+.monitor-screen::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb {
+    background: rgba(0, 229, 255, 0.2);
+    border-radius: 3px;
+}
+
+/* Response Adaptability (Media queries) */
+@media (max-width: 992px) {
+    .status-grid {
+        grid-template-columns: 1fr;
+    }
+    .skills-layout {
+        grid-template-columns: 1fr;
+    }
+    .quest-layout {
+        grid-template-columns: 1fr;
+    }
+    .skill-activation-grid {
+        grid-template-columns: 1fr;
+    }
+    .activation-info {
+        border-right: none;
+        border-bottom: 1.5px solid rgba(0, 229, 255, 0.2);
+    }
+    .guild-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    .footer-wrap {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    .hud-profile {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+}
