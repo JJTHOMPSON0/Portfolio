@@ -675,21 +675,23 @@ body {
 }
 
 .quest-difficulty.rank-s {
-    background: rgba(255, 234, 0, 0.1);
-    color: var(--accent-yellow);
-    border: 1px solid var(--accent-yellow);
+    background: rgba(255, 51, 102, 0.15);
+    color: var(--accent-red);
+    border: 1px solid var(--accent-red);
+    box-shadow: var(--glow-red);
 }
 
 .quest-difficulty.rank-a {
-    background: rgba(255, 51, 102, 0.1);
-    color: var(--accent-red);
-    border: 1px solid var(--accent-red);
+    background: rgba(255, 102, 0, 0.15);
+    color: #ff6600;
+    border: 1px solid #ff6600;
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.25);
 }
 
 .quest-difficulty.rank-b {
-    background: rgba(0, 229, 255, 0.1);
-    color: var(--accent-cyan);
-    border: 1px solid var(--accent-cyan);
+    background: rgba(255, 234, 0, 0.1);
+    color: var(--accent-yellow);
+    border: 1px solid var(--accent-yellow);
 }
 
 .quest-desc {
