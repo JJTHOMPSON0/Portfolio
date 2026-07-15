@@ -560,12 +560,12 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Rank Badge Colors matching RPG hierarchy */
+/* Rank Badge Colors matching user RPG hierarchy */
 .skill-rank-badge.sss {
-    background: rgba(255, 234, 0, 0.15);
-    color: var(--accent-yellow);
-    border: 1px solid var(--accent-yellow);
-    box-shadow: 0 0 10px rgba(255, 234, 0, 0.25);
+    background: #000;
+    color: #fff;
+    border: 1.5px solid var(--accent-yellow);
+    box-shadow: 0 0 10px rgba(255, 234, 0, 0.35);
 }
 
 .skill-rank-badge.ss {
@@ -576,23 +576,35 @@ body {
 }
 
 .skill-rank-badge.s {
-    background: rgba(0, 229, 255, 0.15);
-    color: var(--accent-cyan);
-    border: 1px solid var(--accent-cyan);
-    box-shadow: var(--glow-cyan);
+    background: rgba(255, 51, 102, 0.15);
+    color: var(--accent-red);
+    border: 1px solid var(--accent-red);
+    box-shadow: var(--glow-red);
 }
 
 .skill-rank-badge.a {
-    background: rgba(0, 255, 102, 0.15);
-    color: #00ff66;
-    border: 1px solid #00ff66;
-    box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
+    background: rgba(255, 102, 0, 0.15);
+    color: #ff6600;
+    border: 1px solid #ff6600;
+    box-shadow: 0 0 10px rgba(255, 102, 0, 0.25);
 }
 
 .skill-rank-badge.b {
-    background: rgba(255, 255, 255, 0.06);
-    color: var(--text-sub);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 234, 0, 0.1);
+    color: var(--accent-yellow);
+    border: 1px solid var(--accent-yellow);
+}
+
+.skill-rank-badge.c {
+    background: rgba(0, 255, 102, 0.1);
+    color: #00ff66;
+    border: 1px solid #00ff66;
+}
+
+.skill-rank-badge.d {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    border: 1px solid #ffffff;
 }
 
 .skill-node-desc {
