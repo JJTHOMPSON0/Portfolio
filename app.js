@@ -161,25 +161,3 @@ if (transmissionForm && portalStatusOverlay) {
         }, 1000);
     });
 }
-
-// 7. Resume Modal Controller
-const resumeModal = document.getElementById('resume-modal');
-const viewResumeBtn = document.getElementById('view-resume-btn');
-const closeResumeBtn = document.getElementById('close-resume-btn');
-
-if (resumeModal && viewResumeBtn && closeResumeBtn) {
-    viewResumeBtn.addEventListener('click', () => {
-        resumeModal.showModal();
-    });
-
-    closeResumeBtn.addEventListener('click', () => {
-        resumeModal.close();
-    });
-
-    // Close when clicking outside modal body (on backdrop)
-    resumeModal.addEventListener('click', (e) => {
-        if (e.target === resumeModal) {
-            resumeModal.close();
-        }
-    });
-}
