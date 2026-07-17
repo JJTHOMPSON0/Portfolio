@@ -1060,10 +1060,65 @@ textarea::-webkit-scrollbar-thumb {
     .footer-wrap {
         flex-direction: column;
         text-align: center;
-        gap: 10px;
     }
-    .hud-profile {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
+}
+
+/* Plexus Canvas Background */
+.plexus-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Tools Section Styles */
+.tools-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.tool-card {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 1px solid rgba(255, 51, 102, 0.15) !important; /* Force red themed borders */
+    background: rgba(4, 6, 12, 0.55);
+    transition: all 0.25s ease;
+}
+
+.tool-card:hover {
+    border-color: rgba(255, 51, 102, 0.55) !important;
+    box-shadow: 0 0 15px rgba(255, 51, 102, 0.25);
+    transform: translateY(-2px);
+}
+
+.tool-icon {
+    color: rgba(255, 51, 102, 0.8);
+    transition: all 0.25s ease;
+}
+
+.tool-card:hover .tool-icon {
+    color: #ff3366;
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 6px rgba(255, 51, 102, 0.5));
+}
+
+.tool-name {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-sub);
+    transition: color 0.25s ease;
+}
+
+.tool-card:hover .tool-name {
+    color: #fff;
 }

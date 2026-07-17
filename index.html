@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background Particles & Scanlines -->
-    <div class="system-particles" id="particles-container"></div>
+    <!-- Background Plexus Canvas & Scanlines -->
+    <canvas id="plexus-canvas" class="plexus-canvas"></canvas>
     <div class="scanlines"></div>
     <div class="glow-overlay"></div>
 
@@ -238,6 +238,90 @@
                         <span class="skill-rank-badge b">B</span>
                     </div>
                     <p class="skill-node-desc">Object-oriented application structures, class hierarchy architectures, and core software patterns.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Tools Inventory -->
+        <section id="tools" class="system-section">
+            <div class="section-badge">ARSENAL TOOLS</div>
+            <div class="tools-grid-layout">
+                <!-- Tool: Cobalt Strike -->
+                <div class="tool-card glass-panel">
+                    <div class="tool-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                    </div>
+                    <span class="tool-name">Cobalt Strike</span>
+                </div>
+                <!-- Tool: BloodHound -->
+                <div class="tool-card glass-panel">
+                    <div class="tool-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                    </div>
+                    <span class="tool-name">Bloodhound</span>
+                </div>
+                <!-- Tool: Mimikatz -->
+                <div class="tool-card glass-panel">
+                    <div class="tool-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    </div>
+                    <span class="tool-name">Mimikatz</span>
+                </div>
+                <!-- Tool: Netexec -->
+                <div class="tool-card glass-panel">
+                    <div class="tool-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
+                    </div>
+                    <span class="tool-name">Netexec</span>
+                </div>
+                <!-- Tool: Evilginx -->
+                <div class="tool-card glass-panel">
+                    <div class="tool-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                    </div>
+                    <span class="tool-name">Evilginx</span>
+                </div>
+                <!-- Tool: Burp Suite -->
+                <div class="tool-card glass-panel">
+                    <div class="tool-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                    </div>
+                    <span class="tool-name">Burp Suite</span>
+                </div>
+                <!-- Tool: Nessus -->
+                <div class="tool-card glass-panel">
+                    <div class="tool-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>
+                    </div>
+                    <span class="tool-name">Nessus</span>
+                </div>
+                <!-- Tool: Metasploit -->
+                <div class="tool-card glass-panel">
+                    <div class="tool-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <span class="tool-name">Metasploit</span>
+                </div>
+                <!-- Tool: OWASP ZAP -->
+                <div class="tool-card glass-panel">
+                    <div class="tool-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="2" y2="12"></line><line x1="12" y1="2" x2="12" y2="22"></line></svg>
+                    </div>
+                    <span class="tool-name">OWASP ZAP</span>
+                </div>
+                <!-- Tool: Nmap -->
+                <div class="tool-card glass-panel">
+                    <div class="tool-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                    </div>
+                    <span class="tool-name">Nmap</span>
+                </div>
+                <!-- Tool: Wireshark -->
+                <div class="tool-card glass-panel">
+                    <div class="tool-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10s3-3 5-3 5 3 5 3 3-3 5-3 5 3 5 3v8s-3-3-5-3-5 3-5 3-3-3-5-3-5 3-5 3v-8z"></path></svg>
+                    </div>
+                    <span class="tool-name">Wireshark</span>
                 </div>
             </div>
         </section>

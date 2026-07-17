@@ -8,43 +8,85 @@ function syncSystemClock() {
 setInterval(syncSystemClock, 1000);
 syncSystemClock();
 
-// 2. Background Particle Engine (Canvas-less CSS particles or lightweight JS engine)
-function buildBackgroundParticles() {
-    const container = document.getElementById('particles-container');
-    if (!container) return;
-    const particleCount = 20;
+// 2. Background Plexus Canvas Animation
+function buildPlexusEffect() {
+    const canvas = document.getElementById('plexus-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
 
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.style.position = 'absolute';
-        particle.style.width = Math.random() * 4 + 2 + 'px';
-        particle.style.height = particle.style.width;
-        particle.style.background = Math.random() > 0.5 ? '#00e5ff' : '#bd00ff';
-        particle.style.borderRadius = '50%';
-        particle.style.opacity = Math.random() * 0.4 + 0.1;
-        particle.style.left = Math.random() * 100 + 'vw';
-        particle.style.top = Math.random() * 100 + 'vh';
-        particle.style.pointerEvents = 'none';
-        
-        // Add random floating animation properties
-        const duration = Math.random() * 20 + 15;
-        particle.style.animation = `floatParticle ${duration}s infinite linear alternate`;
-        
-        // Dynamic custom styles injected for random movement
-        const keyframes = `
-            @keyframes floatParticle {
-                0% { transform: translateY(0) translateX(0); }
-                100% { transform: translateY(${Math.random() * 200 - 100}px) translateX(${Math.random() * 200 - 100}px); }
-            }
-        `;
-        const styleNode = document.createElement('style');
-        styleNode.textContent = keyframes;
-        document.head.appendChild(styleNode);
+    let particles = [];
+    const maxParticles = 80;
+    const maxDistance = 120;
 
-        container.appendChild(particle);
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
     }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.vx = (Math.random() - 0.5) * 0.5;
+            this.vy = (Math.random() - 0.5) * 0.5;
+            this.radius = Math.random() * 2 + 1;
+        }
+
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+
+            // Loop/Bounce boundaries
+            if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
+            if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 51, 102, 0.45)';
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < maxParticles; i++) {
+        particles.push(new Particle());
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const p1 = particles[i];
+                const p2 = particles[j];
+                const dx = p1.x - p2.x;
+                const dy = p1.y - p2.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < maxDistance) {
+                    ctx.beginPath();
+                    ctx.moveTo(p1.x, p1.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    const alpha = (1 - dist / maxDistance) * 0.22;
+                    ctx.strokeStyle = `rgba(255, 51, 102, ${alpha})`;
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(animate);
+    }
+    animate();
 }
-buildBackgroundParticles();
+buildPlexusEffect();
 
 // 3. RPG Attributes Allocation System
 let availablePoints = 5;
