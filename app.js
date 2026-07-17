@@ -17,6 +17,17 @@ function buildPlexusEffect() {
     let particles = [];
     const maxParticles = 80;
     const maxDistance = 120;
+    
+    // Mouse tracker
+    let mouse = { x: null, y: null, radius: 150 };
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+    window.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
 
     function resizeCanvas() {
         canvas.width = window.innerWidth;
@@ -63,6 +74,7 @@ function buildPlexusEffect() {
             p.draw();
         });
 
+        // Draw connection lines between particles
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const p1 = particles[i];
@@ -82,6 +94,26 @@ function buildPlexusEffect() {
                 }
             }
         }
+
+        // Draw connection lines to mouse
+        if (mouse.x !== null && mouse.y !== null) {
+            particles.forEach(p => {
+                const dx = p.x - mouse.x;
+                const dy = p.y - mouse.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < mouse.radius) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    const alpha = (1 - dist / mouse.radius) * 0.35;
+                    ctx.strokeStyle = `rgba(255, 51, 102, ${alpha})`;
+                    ctx.lineWidth = 1.2;
+                    ctx.stroke();
+                }
+            });
+        }
+
         requestAnimationFrame(animate);
     }
     animate();
